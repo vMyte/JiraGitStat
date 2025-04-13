@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: data-update-service
+
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5433/JiraGitStat
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+    deserialization:
+      ADJUST_DATES_TO_CONTEXT_TIME_ZONE: false
+
+
+server:
+  port: 8084
+
+github:
+  token: ${GITHUB_TOKEN}
+  baseurl: https://api.github.com
+  repos: SocketTest
+  owner: vMyte
+
+jira:
+  token: ${JIRA_TOKEN}
+  baseurl: https://jiragitstat.atlassian.net/rest/api/3
+  email: sirius2015aak@gmail.com

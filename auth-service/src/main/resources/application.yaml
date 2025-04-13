@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/JiraGitStat
+    password: postgres
+    username: postgres
+
+server:
+  port: 8083
+
+
+
