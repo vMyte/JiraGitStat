@@ -23,10 +23,10 @@ server:
 github:
   token: ${GITHUB_TOKEN}
   baseurl: https://api.github.com
-  repos: SocketTest
+  repos: JiraGitStat
   owner: vMyte
 
 jira:
   token: ${JIRA_TOKEN}
-  baseurl: https://jiragitstat.atlassian.net/rest/api/3
+  baseurl: https://jiragitstat.atlassian.net/rest/api/2
   email: sirius2015aak@gmail.com

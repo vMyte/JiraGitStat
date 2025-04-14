@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class InitialLoader {
     private final IssueLoader issueLoader;
-    private final UserMappingInitializer userMappingInitializer;
+    private final UserMappingLoader userMappingInitializer;
     private final CommitLoader commitLoader;
-    private final RepoInitializer repoInitializer;
-
+    private final RepoLoader repoInitializer;
 
     @PostConstruct
     public void saveInitialInformation(){

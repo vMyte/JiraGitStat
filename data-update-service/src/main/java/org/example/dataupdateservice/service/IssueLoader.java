@@ -1,48 +1,41 @@
 package org.example.dataupdateservice.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.dataupdateservice.client.jira.JiraClient;
 import org.example.dataupdateservice.model.dto.IssueDTO;
 import org.example.dataupdateservice.model.dto.IssueDetailsDTO;
 import org.example.dataupdateservice.model.entity.IssueEntity;
+import org.example.dataupdateservice.model.mapper.jira.JiraIssueMapper;
 import org.example.dataupdateservice.repository.IssueRepo;
+import org.example.dataupdateservice.repository.UserMappingRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class IssueLoader {
-    private final WebClient jiraWebClient;
+    private final JiraClient jiraClient;
     private final IssueRepo issueRepo;
+    private final JiraIssueMapper issueMapper;
+    private final UserMappingRepo userMappingRepo;
 
-   // @PostConstruct
     public void loadIssues() {
-        IssueDetailsDTO response = jiraWebClient.get()
-                .uri("/search")
-                .retrieve()
-                .bodyToMono(IssueDetailsDTO.class)
-                .block();
+        IssueDetailsDTO details = jiraClient.getIssueDetails()
+                .blockOptional()
+                .orElseThrow(() -> new RuntimeException("Failed to load issues"));
 
-     for (var elem: response.getIssues()){
-         IssueDTO response1 = jiraWebClient.get()
-                 .uri("/issue/{id}",elem.getId())
-                 .retrieve()
-                 .bodyToMono(IssueDTO.class)
-                 .block();
+        details.getIssues().forEach(issueSummary -> {
+            IssueDTO issueDto = jiraClient.getIssue(issueSummary.getId())
+                    .blockOptional()
+                    .orElse(null);
 
-         IssueEntity issue = new IssueEntity();
-         issue.setKey(response1.getKey());
-          issue.setSummary(response1.getFields().getSummary());
-          issue.setStatus(response1.getFields().getStatus().getName());
-          issue.setAssignee(response1.getFields().getAssignee().getName());
-          issue.setCreatedAt(response1.getFields().getCreatedAt().toString());
-         issue.setUpdatedAt(
-                 Optional.ofNullable(response1.getFields().getClosedAt())
-                         .map(Object::toString)
-                         .orElse(null)
-         );
-       issueRepo.save(issue);
-     }
+            //обработка ситуации с отсутствием в user_mapping пользователя(нет commit в github или назначенных на него проблем jira)
+            if (issueDto != null && userMappingRepo.existsByJiraUsername(issueDto.getFields().getAssignee().getName())) {
+                issueRepo.save(issueMapper.toEntity(issueDto));
+            }
+        });
     }
 }

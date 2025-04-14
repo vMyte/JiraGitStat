@@ -3,27 +3,21 @@ package org.example.dataupdateservice.service;
 import lombok.RequiredArgsConstructor;
 import org.example.dataupdateservice.config.GitHubConfig;
 import org.example.dataupdateservice.model.entity.Repos;
+import org.example.dataupdateservice.model.mapper.github.GitHubRepoMapper;
 import org.example.dataupdateservice.repository.RepositoryRepo;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 
 @Service
 @RequiredArgsConstructor
-public class RepoInitializer {
+public class RepoLoader {
     private final GitHubConfig gitHubConfig;
     private final RepositoryRepo repositoryRep;
+    private final GitHubRepoMapper gitHubRepoMapper;
 
     public void initRepository() {
         if (!repositoryRep.existsByName(gitHubConfig.getRepos())) {
-            Repos repo = new Repos();
-            repo.setName(gitHubConfig.getRepos());
-            repo.setOwner(gitHubConfig.getOwner());
-            repo.setUrl(gitHubConfig.getBaseurl() + "/" +
-                    gitHubConfig.getOwner() + "/" +
-                    gitHubConfig.getRepos());
-            repo.setUpdatedAt(String.valueOf(LocalDateTime.now()));
+            Repos repo = gitHubRepoMapper.toEntity();
             repositoryRep.save(repo);
             System.out.println("Добавление репозиторий прошло успешно!");
         }
