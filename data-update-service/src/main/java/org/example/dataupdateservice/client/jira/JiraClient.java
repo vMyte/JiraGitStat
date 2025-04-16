@@ -40,4 +40,20 @@ public class JiraClient {
                 .bodyToMono(IssueDTO.class);
     }
 
+    public Mono<IssueDetailsDTO> getNewIssueDetails(String dateTime) {
+        String jqlQuery;
+        if(dateTime != null)
+         jqlQuery = "created > '" + dateTime + "' OR resolutiondate IS EMPTY";
+        else  jqlQuery = "resolutiondate IS EMPTY";
+
+        return jiraWebClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/search")
+                        .queryParam("jql", jqlQuery)
+                        .build())
+                .retrieve()
+                .bodyToMono(IssueDetailsDTO.class);
+    }
+
+
 }

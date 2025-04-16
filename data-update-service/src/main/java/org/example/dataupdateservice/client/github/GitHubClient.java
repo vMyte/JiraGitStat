@@ -36,5 +36,15 @@ public class GitHubClient {
             .bodyToMono(new ParameterizedTypeReference<List<UserGitHubDTO>>() {});
   }
 
-
+  public Mono<List<CommitDTO>> getNewCommits(String date) {
+    return gitHubWebClient.get()
+            .uri(uriBuilder -> uriBuilder
+                    .path("/repos/{owner}/{repo}/commits")
+                    .queryParam("since", date) // Добавляем параметр 'since'
+                    .build(gitHubConfig.getOwner(), gitHubConfig.getRepos()))
+            .retrieve()
+            .bodyToMono(new ParameterizedTypeReference<List<CommitDTO>>() {});
+  }
 }
+
+

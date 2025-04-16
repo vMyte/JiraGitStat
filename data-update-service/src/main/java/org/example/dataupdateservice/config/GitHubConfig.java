@@ -16,6 +16,8 @@ import org.springframework.web.reactive.function.client.WebClient;
         private String owner;
         private String repos;
 
+        private String lastDateCommits;
+
         @Bean
       public WebClient gitHubWebClient(){
             return WebClient

@@ -3,6 +3,7 @@ package org.example.dataupdateservice.service;
 import lombok.RequiredArgsConstructor;
 import org.example.dataupdateservice.client.github.GitHubClient;
 import org.example.dataupdateservice.client.jira.JiraClient;
+import org.example.dataupdateservice.model.entity.UserMapping;
 import org.example.dataupdateservice.model.mapper.common.UserMappingMapper;
 import org.example.dataupdateservice.repository.UserMappingRepo;
 import org.springframework.stereotype.Service;
@@ -37,8 +38,17 @@ public class UserMappingLoader {
                 .forEach(jiraUser -> {
                     String email = normalizeEmail(jiraUser.getEmailAddress());
                     //Добавление проверки на отсутствие записи о пользователе ранее
-                    if (email != null && gitHubUsers.containsKey(email) && !userMappingRepo.existsByEmail(email)) {
-                        userMappingRepo.save(mapper.toEntity(jiraUser, gitHubUsers.get(email)));
+                    if (email != null ) {
+                        if(!userMappingRepo.existsByEmail(email)) {
+                            userMappingRepo.save(mapper.toEntity(jiraUser, gitHubUsers.get(email)));
+                            System.out.println("Данные пользователя " + email + " были добавлены!");
+                        } else {
+                          UserMapping userMapping =  userMappingRepo.findByEmail(email);
+                          userMapping.setGithubUsername(gitHubUsers.get(email));
+                          userMapping.setJiraUsername(jiraUser.getDisplayName());
+                          userMappingRepo.save(userMapping);
+                          System.out.println("Данные пользователя " + email + " были обновлены!");
+                        }
                     }
                 });
     }

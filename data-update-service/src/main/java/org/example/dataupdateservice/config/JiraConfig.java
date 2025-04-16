@@ -20,6 +20,8 @@ public class JiraConfig {
     private String baseurl;
     private String email;
 
+    private String lastDateIssue;
+
     @Bean
     public WebClient jiraWebClient() {
         String auth = Base64.getEncoder().encodeToString((email + ":" + token).getBytes());
@@ -30,7 +32,4 @@ public class JiraConfig {
                 .defaultHeader("Accept", "application/json")
                 .build();
     }
-    //hihihhihhihihih
-
-
 }

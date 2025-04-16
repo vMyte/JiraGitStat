@@ -10,5 +10,9 @@ public interface UserMappingRepo extends JpaRepository<UserMapping,Long> {
 
     boolean existsByEmail(String email);
 
+    UserMapping findByEmail(String email);
+    UserMapping findByJiraUsername(String jiraUsername);
+    UserMapping findByGithubUsername(String gitHubUsername);
+
     boolean existsByGithubUsername(String name);
 }
