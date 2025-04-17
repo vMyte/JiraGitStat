@@ -12,7 +12,7 @@ public class InitialLoader {
     private final CommitLoader commitLoader;
     private final RepoLoader repoInitializer;
 
-    @PostConstruct
+   // @PostConstruct
     public void saveInitialInformation(){
         repoInitializer.initRepository();
         userMappingInitializer.loadUserMapping();

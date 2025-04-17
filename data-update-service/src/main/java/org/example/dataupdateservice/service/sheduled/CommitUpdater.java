@@ -46,9 +46,20 @@ public class CommitUpdater {
                     }
 
                     for(var elem: entities){
-                        if(!commitRepo.existsBySha(elem.getSha())){
-                            commitRepo.save(elem);
-                            System.out.println("Коммит " + elem.getSha() + " был добавлен!");
+                        if (!commitRepo.existsBySha(elem.getSha())) {
+                            gitHubClient.getStatCommit(elem.getSha())
+                                    .subscribe(stat -> {
+                                        elem.setTotal(stat.getStats().getTotal());
+                                        elem.setAdd(stat.getStats().getAdditions());
+                                        elem.setDelete(stat.getStats().getDeletions());
+
+                                        commitRepo.save(elem);
+                                        System.out.println("Коммит " + elem.getSha() + " был добавлен! Статистика: +" +
+                                                stat.getStats().getAdditions() + " -" + stat.getStats().getDeletions());
+                                    }, error -> {
+                                        System.err.println("Ошибка при получении статистики для коммита " + elem.getSha() + ": " + error.getMessage());
+                                        commitRepo.save(elem); // Сохраняем без статистики при ошибке
+                                    });
                         }
                     }
 

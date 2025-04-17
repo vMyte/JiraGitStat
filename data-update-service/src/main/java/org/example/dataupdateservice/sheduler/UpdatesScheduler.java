@@ -18,8 +18,8 @@ public class UpdatesScheduler {
 
     @Scheduled(cron = "*/30 * * * * *")
     public void loadUpdate(){
-        userMappingUpdater.loadUserMapping();
-        issueUpdater.updateIssues();
+       // userMappingUpdater.loadUserMapping();
+        //issueUpdater.updateIssues();
         commitUpdater.updateCommits();
     }
 }

@@ -24,6 +24,9 @@ import org.springframework.web.reactive.function.client.WebClient;
                     .builder()
                     .baseUrl(baseurl)
                     .defaultHeader("Authorization", "Bearer " + token)
+                    .codecs(configurer -> {
+                        configurer.defaultCodecs().maxInMemorySize(10 * 1024 * 1024); // 10 MB
+                    })
                     .build();
         }
     }

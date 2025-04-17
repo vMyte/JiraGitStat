@@ -27,4 +27,14 @@ public class Commit {
 
     @Column(name = "hash")
     private String sha;
+
+    @Column(name = "total")
+    private Long total;
+
+    @Column(name = "add")
+    private Long add;
+
+    @Column(name = "delete")
+    private Long delete;
+
 }

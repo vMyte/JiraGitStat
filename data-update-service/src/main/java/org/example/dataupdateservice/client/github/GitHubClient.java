@@ -3,6 +3,7 @@ package org.example.dataupdateservice.client.github;
 import lombok.RequiredArgsConstructor;
 import org.example.dataupdateservice.config.GitHubConfig;
 import org.example.dataupdateservice.model.dto.CommitDTO;
+import org.example.dataupdateservice.model.dto.StatCommitDTO;
 import org.example.dataupdateservice.model.dto.UserGitHubDTO;
 import org.example.dataupdateservice.model.entity.User;
 import org.springframework.core.ParameterizedTypeReference;
@@ -34,6 +35,16 @@ public class GitHubClient {
                     gitHubConfig.getRepos())
             .retrieve()
             .bodyToMono(new ParameterizedTypeReference<List<UserGitHubDTO>>() {});
+  }
+
+  public Mono<StatCommitDTO> getStatCommit(String key){
+    return gitHubWebClient.get()
+            .uri("/repos/{owner}/{repo}/commits/{key}",
+                    gitHubConfig.getOwner(),
+                    gitHubConfig.getRepos(),
+                    key)
+            .retrieve()
+            .bodyToMono(StatCommitDTO.class);
   }
 
   public Mono<List<CommitDTO>> getNewCommits(String date) {
