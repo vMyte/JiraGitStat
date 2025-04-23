@@ -1,5 +1,24 @@
 spring:
   application:
     name: stat-service
+
+  rabbitmq:
+    username: admin
+    host: localhost
+    password: password
+    port: 5672
+
+  datasource:
+    password: postgres
+    username: postgres
+    url: jdbc:postgresql://localhost:5433/JiraGitStat
+  jpa:
+    hibernate:
+      ddl-auto: update
+
 server:
   port: 8087
+
+
+
+

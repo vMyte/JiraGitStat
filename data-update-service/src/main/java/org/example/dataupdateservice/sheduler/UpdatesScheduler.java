@@ -16,10 +16,10 @@ public class UpdatesScheduler {
     private final CommitUpdater commitUpdater;
     private final IssueUpdater issueUpdater;
 
-    @Scheduled(cron = "*/30 * * * * *")
+   // @Scheduled(cron = "*/30 * * * * *")
     public void loadUpdate(){
-       // userMappingUpdater.loadUserMapping();
-        //issueUpdater.updateIssues();
+       userMappingUpdater.loadUserMapping();
+        issueUpdater.updateIssues();
         commitUpdater.updateCommits();
     }
 }

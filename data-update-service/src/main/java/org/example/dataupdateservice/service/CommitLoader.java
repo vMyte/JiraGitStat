@@ -32,7 +32,7 @@ public class CommitLoader {
     private final RepositoryRepo repositoryRepo;
     private final GitHubConfig gitHubConfig;
 
-    @PostConstruct
+   // @PostConstruct
     public void loadCommits() {
         Repos repo = repositoryRepo.findByOwnerAndName(
                 gitHubConfig.getOwner(),

@@ -1,3 +1,6 @@
+server:
+  port: 8084
+
 spring:
   application:
     name: data-update-service
@@ -10,15 +13,20 @@ spring:
     hibernate:
       ddl-auto: update
 
+  rabbitmq:
+    username: admin
+    host: localhost
+    password: password
+    port: 5672
+
+queue:
+  name: mainQueue
+
   jackson:
     serialization:
       WRITE_DATES_AS_TIMESTAMPS: false
     deserialization:
       ADJUST_DATES_TO_CONTEXT_TIME_ZONE: false
-
-
-server:
-  port: 8084
 
 github:
   token: ${GITHUB_TOKEN}
