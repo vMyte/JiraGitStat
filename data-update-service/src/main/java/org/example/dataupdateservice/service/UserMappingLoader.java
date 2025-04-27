@@ -3,8 +3,10 @@ package org.example.dataupdateservice.service;
 import lombok.RequiredArgsConstructor;
 import org.example.dataupdateservice.client.github.GitHubClient;
 import org.example.dataupdateservice.client.jira.JiraClient;
+import org.example.dataupdateservice.config.GitHubConfig;
 import org.example.dataupdateservice.model.entity.UserMapping;
 import org.example.dataupdateservice.model.mapper.common.UserMappingMapper;
+import org.example.dataupdateservice.repository.RepositoryRepo;
 import org.example.dataupdateservice.repository.UserMappingRepo;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +20,11 @@ public class UserMappingLoader {
     private final JiraClient jiraClient;
     private final UserMappingMapper mapper;
     private final UserMappingRepo userMappingRepo;
+    private final RepositoryRepo repositoryRepo;
+    private final GitHubConfig gitHubConfig;
 
     public void loadUserMapping() {
+       Long repoId = repositoryRepo.findByOwnerAndName(gitHubConfig.getOwner(),gitHubConfig.getRepos()).get().getId();
         //Получаем и обрабатываем GitHub пользователей
         Map<String, String> gitHubUsers = gitHubClient.getUsers()
                 .blockOptional()
@@ -40,7 +45,7 @@ public class UserMappingLoader {
                     //Добавление проверки на отсутствие записи о пользователе ранее
                     if (email != null ) {
                         if(!userMappingRepo.existsByEmail(email)) {
-                            userMappingRepo.save(mapper.toEntity(jiraUser, gitHubUsers.get(email)));
+                            userMappingRepo.save(mapper.toEntity(jiraUser, gitHubUsers.get(email),repoId));
                             System.out.println("Данные пользователя " + email + " были добавлены!");
                         } else {
                           UserMapping userMapping =  userMappingRepo.findByEmail(email);

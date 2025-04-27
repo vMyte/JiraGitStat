@@ -1,4 +1,4 @@
-package org.example.dataupdateservice.model.entity;
+package org.example.statservice.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

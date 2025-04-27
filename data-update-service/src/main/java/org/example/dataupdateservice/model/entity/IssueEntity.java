@@ -30,4 +30,7 @@ public class IssueEntity {
 
     @Column(name = "updated_at")
     private String updatedAt;
+
+    @Column(name = "repository_id")
+    private Long repositoryId;
 }

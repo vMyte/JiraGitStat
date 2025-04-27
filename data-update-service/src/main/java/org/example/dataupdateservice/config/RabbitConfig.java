@@ -3,6 +3,7 @@ package org.example.dataupdateservice.config;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,6 +36,5 @@ public class RabbitConfig {
     public RabbitAdmin rabbitAdmin(){
         return new RabbitAdmin(connectionFactory());
     }
-
 
 }

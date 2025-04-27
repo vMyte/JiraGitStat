@@ -19,9 +19,6 @@ public class Statistic {
     @Column(name = "user_mapping_id")
     private Long userMappingId;
 
-    @Column(name = "repository_id")
-    private Long repositoryId;
-
     @Column(name = "metric_name")
     private String metricName;
 
