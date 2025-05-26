@@ -16,13 +16,13 @@ public class  InitialLoader {
     private final UserMappingLoader userMappingInitializer;
     private final CommitLoader commitLoader;
     private final RepoLoader repoInitializer;
-    private final Queue queue;
-    private final RabbitAdmin rabbitAdmin;
+   // private final Queue queue;
+   // private final RabbitAdmin rabbitAdmin;
     private final MessageSender messageSender;
 
     @PostConstruct
     public void saveInitialInformation(){
-        rabbitAdmin.declareQueue(queue);
+        //rabbitAdmin.declareQueue(queue);
 
         repoInitializer.initRepository();
         userMappingInitializer.loadUserMapping();
@@ -30,7 +30,7 @@ public class  InitialLoader {
         commitLoader.loadCommits();
 
         System.out.println("Данные обновились...");
-        messageSender.sendMassage();
+       // messageSender.sendMassage();
     }
 
 }

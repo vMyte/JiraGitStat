@@ -20,7 +20,7 @@ public class UpdatesScheduler {
     private final IssueUpdater issueUpdater;
     private final MessageSender messageSender;
 
-    @Scheduled(cron = "0 */2 * * * *")
+    //@Scheduled(cron = "0 */2 * * * *")
     public void loadUpdate(){
        userMappingUpdater.loadUserMapping();
         issueUpdater.updateIssues();
