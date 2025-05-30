@@ -1,0 +1,237 @@
+@font-face {
+  font-family: 'Cygre';
+  src: url('../fonts/Cygre-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cygre Black';
+  src: url('../fonts/Cygre-Black.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, Roboto, Helvetica, sans-serif;
+    background-color: #ffffff;
+    overflow-x: hidden;
+  }
+  
+  /* Landing page container */
+  .landing-page {
+    background-color: #ffffff;
+    padding-bottom: 100px;
+    overflow: hidden;
+  }
+  
+  /* Hero section */
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    padding: 35px 80px;
+    overflow: hidden;
+    align-items: flex-start;
+    background-image: url('../images/background.png'); /* Укажите путь к изображению */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  /* Content wrapper */
+  .content-wrapper {
+    position: relative;
+    z-index: 10;
+    width: 796px;
+    max-width: 100%;
+  }
+  
+  /* Logo */
+  .logo {
+    width: 109px;
+    max-width: 100%;
+  }
+  
+  /* Hero content */
+  .hero-content {
+    margin-top: 252px;
+  }
+  
+  /* Hero title */
+  .hero-title {
+    color: #353535;
+    font-family: 'Cygre Black', -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 80px;
+    margin-bottom: 40px;
+  }
+  
+  /* Signup form */
+  .signup-form {
+    margin-top: 72px;
+    width: 361px;
+    max-width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  /* Form field */
+  .form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Field label */
+  .field-label {
+    color: #1e1e1e;
+    font-family: 'Cygre', -apple-system, Roboto, Helvetica, sans-serif;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  /* Field input */
+  .field-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #d9d9d9;
+    font-family: 'Inter', -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #1e1e1e;
+  }
+  
+  /* Signup button */
+  .signup-button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #2c2c2c;
+    color: #f5f5f5;
+    font-family: 'Cygre', -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .signup-button:hover {
+    background-color: #444444;
+  }
+  
+  /* Media queries for responsive design */
+  @media (max-width: 991px) {
+    .landing-page {
+      padding-bottom: 50px;
+    }
+  
+    .hero-container {
+      padding: 20px;
+    }
+  
+    .hero-content {
+      margin-top: 100px;
+    }
+  
+    .hero-title {
+      font-size: 40px;
+      line-height: 50px;
+    }
+  
+    .signup-form {
+      margin-top: 40px;
+    }
+  }
+
+  .error-message {
+    color: #ff4d4f;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  
+  /* Для dashboard */
+  #tasks pre {
+    background: #f5f5f5;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+
+  .stats-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+  }
+  
+  .stats-block {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .block-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    background: #f9fafb;
+    border-radius: 10px;
+    padding: 15px;
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  .card-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .card-trend {
+    font-size: 14px;
+    color: #4caf50; /* зеленый */
+  }
+  
+  .chart-placeholder {
+    margin-top: 20px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 16px;
+  }
+  
+  

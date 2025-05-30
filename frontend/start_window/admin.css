@@ -1,0 +1,510 @@
+@font-face {
+    font-family: 'Cygre';
+    src: url('../fonts/Cygre-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Cygre Black';
+    src: url('../fonts/Cygre-Black.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+.admin-page {
+    display: flex;
+    height: 100vh;
+    font-family: 'Cygre Black', -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 25px;
+  }
+  
+  /* Левая колонка */
+  .sidebar {
+    width: 220px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .admin-title {
+    font-family: 'Cygre Black', -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #2c2c2c;
+  }
+  
+  /* Кнопки меню */
+  .stats-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .menu-button {
+    background-color: transparent;
+    border: none;
+    padding: 12px 16px;
+    font-family: 'Cygre', -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .menu-button:hover,
+  .menu-button.active {
+    background-color: #eeeeee;
+  }
+  
+  /* Правая часть */
+  .content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+  }
+  
+  /* Верхняя строка с навигацией */
+  .top-bar {
+    margin-bottom: 30px;
+  }
+  
+  .breadcrumbs {
+    font-family: 'Cygre', -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+  }
+  
+  /* Секция со статистикой */
+.stats-section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+}
+
+/* Каждый блок (Задачи, Команда, Код) */
+.stats-block {
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Заголовок блока */
+.block-title {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: 'Cygre Black', sans-serif;
+  margin-bottom: 16px;
+  color: #2c2c2c;
+}
+
+/* Сетка карточек */
+.cards {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Одна карточка */
+.card {
+  flex: 1 1 20px;
+  min-width: 180px;
+  background-color: #EDEEFC;
+  border-radius: 12px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Текст внутри карточки */
+.card-title {
+  font-size: 14px;
+  font-family: 'Cygre', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 100;
+  color: #666;
+  margin-bottom: 0px;
+}
+
+.card-value {
+  font-size: 28px;
+  font-family: 'Cygre', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 700;
+  color: #1e1e1e;
+  font-family: 'Cygre Black', sans-serif;
+  line-height: 0.5;
+}
+
+.card-trend {
+  font-size: 14px;
+  font-weight: 500;
+  color: #28a745;
+}
+
+/* Заглушка графика */
+.chart-placeholder {
+  margin-top: 24px;
+  background-color: #eeeeee;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  font-size: 16px;
+}
+
+
+/* блок для команды */
+/* Стили для секции Команда */
+.team-section {
+  padding: 20px;
+}
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: 'Cygre', sans-serif;
+  font-size: 14px;
+}
+
+.search-button {
+  padding: 12px 20px;
+  background-color: #2c2c2c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Cygre', sans-serif;
+  transition: background-color 0.2s;
+}
+
+.search-button:hover {
+  background-color: #444;
+}
+
+.employee-dashboard {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.employee-name {
+  font-size: 30px;
+  font-family: 'Cygre Black', sans-serif;
+  color: #2c2c2c;
+  margin-bottom: 20px;
+}
+
+.metrics-container {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.metric-card {
+  flex: 1;
+  background-color: #EDEEFC;
+  border-radius: 12px;
+  padding: 16px;
+  min-width: 180px;
+}
+
+.metric-card h2 {
+  font-size: 14px;
+  font-family: 'Cygre', sans-serif;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.metric-value {
+  font-size: 28px;
+  font-family: 'Cygre Black', sans-serif;
+  color: #1e1e1e;
+}
+
+.chart-container {
+  margin-bottom: 30px;
+}
+
+.chart-container h2 {
+  font-size: 16px;
+  font-family: 'Cygre', sans-serif;
+  color: #1e1e1e;
+  margin-bottom: 15px;
+}
+
+.chart {
+  display: flex;
+  gap: 15px;
+  height: 205px;
+}
+
+.y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
+  padding-right: 10px;
+}
+
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  flex: 1;
+}
+
+.bar {
+  width: 28px;
+  border-radius: 6px;
+  transition: height 0.3s ease;
+}
+
+.x-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.bottom-metrics {
+  display: flex;
+  gap: 24px;
+}
+
+/* Стили для поиска */
+.search-container {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  font-family: 'Cygre', sans-serif;
+  font-size: 14px;
+}
+
+.search-button {
+  padding: 12px 24px;
+  background-color: #2c2c2c;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Cygre Black', sans-serif;
+  transition: background-color 0.2s;
+}
+
+.search-button:hover {
+  background-color: #444;
+}
+
+/* Стили для графика */
+.chart-container {
+  margin-top: 24px;
+}
+
+.chart-title {
+  font-family: 'Cygre', sans-serif;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.chart-placeholder {
+  display: flex;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  height: 220px;
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 12px;
+  font-size: 12px;
+  color: #888;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex: 1;
+}
+
+.chart-bar {
+  width: 28px;
+  background-color: #EDEEFC;
+  border-radius: 6px;
+  transition: height 0.3s ease;
+}
+
+.chart-x-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #888;
+}
+
+
+/* Стили для рейтинга */
+.sort-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.sort-button {
+  padding: 10px 16px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Cygre', sans-serif;
+  transition: all 0.2s;
+}
+
+.sort-button:hover, .sort-button.active {
+  background-color: #2c2c2c;
+  color: white;
+}
+
+.rating-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header, .table-row {
+  display: flex;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table-header {
+  font-weight: bold;
+  background-color: #f9f9f9;
+}
+
+.header-cell, .row-cell {
+  flex: 1;
+}
+
+.value-cell {
+  text-align: right;
+  width: 120px;
+}
+
+.employee-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 12px;
+  background-color: #EDEEFC;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Стили ТОЛЬКО для таблицы рейтинга */
+.rating-section .rating-table {
+  width: 100%;
+  font-family: 'Cygre', -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+}
+
+.rating-section .table-header, 
+.rating-section .table-row {
+  display: flex;
+  padding: 8px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  align-items: center;
+}
+
+.rating-section .table-header {
+  font-weight: 500;
+  background-color: #f9f9f9;
+  font-size: 12px;
+  color: #666;
+}
+
+.rating-section .header-cell, 
+.rating-section .row-cell {
+  flex: 1;
+  padding: 4px 8px;
+}
+
+.rating-section .value-cell {
+  text-align: right;
+  width: 80px;
+  font-family: 'Cygre', sans-serif;
+  font-weight: normal;
+}
+
+.rating-section .employee-info {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.rating-section .employee-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #EDEEFC;
+  flex-shrink: 0;
+}
+
+.rating-section .employee-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.rating-section .employee-role {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Стили для текста в таблице рейтинга */
+.rating-section .employee-name,
+.rating-section .employee-role {
+  font-weight: normal !important; /* Обычное начертание */
+}
+

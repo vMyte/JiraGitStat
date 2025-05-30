@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow - Статистика</title>
+  <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+</head>
+<body>
+  <main class="admin-page">
+    <!-- Левая колонка с кнопками -->
+    <aside class="sidebar">
+      <h1 class="admin-title">TaskFlow</h1>
+      <div class="stats-menu">
+        <button class="menu-button active" data-section="Статистика">📊 Статистика</button>
+        <button class="menu-button" data-section="Команда">👥 Команда</button>
+        <button class="menu-button" data-section="Рейтинг">⭐ Рейтинг</button>
+      </div>
+    </aside>
+  
+    <!-- Правая часть с заголовками и контентом -->
+    <section class="content">
+      <div class="top-bar">
+        <div class="breadcrumbs">TaskFlow / <span id="current-section">Статистика</span></div>
+        <h2 class="section-title" id="section-title">Статистика по проекту</h2>
+      </div>
+      
+<!-- Здесь будет меняться содержимое -->
+<div class="dynamic-content">
+  <!-- Динамический контент -->
+  <div class="stats-section">
+    <section class="stats-block">
+      <h3 class="block-title">Задачи</h3>
+      <div class="cards">
+        <div class="card">
+          <p class="card-title">Решенные задачи</p>
+          <p class="card-value" id="done-issues">0</p>
+
+        </div>
+      </div>
+      
+      <canvas id="issues-chart" width="400" height="200" style="margin-top: 20px;""></canvas>
+
+    </section>
+
+    <section class="stats-block">
+      <h3 class="block-title">Программный код</h3>
+      <div class="cards">
+        <div class="card">
+          <p class="card-title">Добавлено строк</p>
+          <p class="card-value" id="added-lines">0</p>
+
+        </div>
+        <div class="card">
+          <p class="card-title">Удалено строк</p>
+          <p class="card-value" id="deleted-lines">0</p>
+
+        </div>
+        <div class="card">
+          <p class="card-title">Коммитов</p>
+          <p class="card-value" id="commits-total">0</p>
+
+        </div>
+
+        
+        
+      </div>
+
+      <div class="cards" style="margin-top: 20px;">
+        <div class="card">
+        <p class="card-title">Среднее количество строк в коммите</p>
+        <p class="card-value" id="avg-lines-total">0</p>
+        </div>
+        </div>
+
+    </section>
+  </div>
+</div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

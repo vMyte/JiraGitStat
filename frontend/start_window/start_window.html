@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow - Управление проектами</title>
+  <link rel="stylesheet" href="st_w.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main class="landing-page">
+    <section class="hero-container">
+      <div class="content-wrapper">
+        <header class="header">
+          <img src="../images/logo.png" alt="Logo" class="logo">
+        </header>
+        <div class="hero-content">
+          <h1 class="hero-title">Управляйте проектами<br />и командами с легкостью</h1>
+          <form id="loginForm" class="signup-form">
+            <div class="form-field">
+              <label for="email" class="field-label">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="field-input"
+                placeholder="Введите ваш email"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="password" class="field-label">Пароль</label>
+              <input
+                type="password"
+                id="password"
+                class="field-input"
+                placeholder="Введите ваш пароль"
+                required
+              />
+            </div>
+            <button type="submit" class="signup-button">
+              <span class="button-text">Войти</span>
+            </button>
+            <div id="error" class="error-message" style="color: red; margin-top: 10px;"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const errorElement = document.getElementById('error');
+
+      try {
+        const response = await fetch('http://localhost:65535/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email, password }),
+});
+
+if (!response.ok) {
+  const error = await response.text();
+  throw new Error(error);
+}
+
+// Получаем чистый текст (токен) вместо JSON
+const token = await response.text(); 
+localStorage.setItem('jwt', token);
+        window.location.href = 'dashboard.html'; // Перенаправляем
+      } catch (err) {
+        errorElement.textContent = err.message;
+      }
+    });
+  </script>
+</body>
+</html>
