@@ -43,7 +43,7 @@
     align-items: flex-start;
     background-image: url('../images/background.png'); /* Укажите путь к изображению */
     background-size: cover;
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
   }
   
@@ -51,19 +51,19 @@
   .content-wrapper {
     position: relative;
     z-index: 10;
-    width: 796px;
+    width: 896px;
     max-width: 100%;
   }
   
   /* Logo */
   .logo {
-    width: 109px;
+    width: 209px;
     max-width: 100%;
   }
   
   /* Hero content */
   .hero-content {
-    margin-top: 252px;
+    margin-top: 352px;
   }
   
   /* Hero title */
