@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: github-service
-server:
-  port: 8085

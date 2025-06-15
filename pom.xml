@@ -20,11 +20,11 @@
     </dependencies>
 
     <modules>
-        <module>api-gateway</module>
+       
         <module>auth-service</module>
         <module>data-update-service</module>
      
-        <module>eureka-server</module>
+        
         <module>stat-service</module>
     </modules>
     
